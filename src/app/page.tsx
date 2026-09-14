@@ -774,13 +774,13 @@ export default function HomePage() {
                 printItems:
                     selectedServiceId === "print" && !isSelected
                         ? {
-                              ...current.printItems,
-                              [choiceId]: current.printItems[choiceId] ?? {
-                                  dimensions: "",
-                                  customDimensions: "",
-                                  quantity: "",
-                              },
-                          }
+                            ...current.printItems,
+                            [choiceId]: current.printItems[choiceId] ?? {
+                                dimensions: "",
+                                customDimensions: "",
+                                quantity: "",
+                            },
+                        }
                         : current.printItems,
             };
         });
@@ -964,8 +964,8 @@ export default function HomePage() {
                                                 {facilitiesLoading
                                                     ? "Loading facilities..."
                                                     : facilitiesError
-                                                      ? "Facilities unavailable"
-                                                      : "Select facility"}
+                                                        ? "Facilities unavailable"
+                                                        : "Select facility"}
                                             </option>
                                             {facilities.map((facility) => (
                                                 <option
@@ -1134,8 +1134,8 @@ export default function HomePage() {
         setAttachmentNote(
             tooBig.length > 0
                 ? `Skipped ${tooBig.length} file(s) over 100 MB: ${tooBig
-                      .map((file) => file.name)
-                      .join(", ")}`
+                    .map((file) => file.name)
+                    .join(", ")}`
                 : "",
         );
 
@@ -1701,32 +1701,32 @@ export default function HomePage() {
                 service.id === "print"
                     ? []
                     : service.fields
-                          .filter((field) => shouldShowFieldFor(field, form))
-                          .map((field) => ({
-                              id: field.id,
-                              label: field.label,
-                              value: form.answers[field.id] ?? "",
-                          }));
+                        .filter((field) => shouldShowFieldFor(field, form))
+                        .map((field) => ({
+                            id: field.id,
+                            label: field.label,
+                            value: form.answers[field.id] ?? "",
+                        }));
 
             const printItems =
                 service.id === "print"
                     ? form.choiceIds.map((choiceId) => {
-                          const choice = service.choices.find(
-                              (item) => item.id === choiceId,
-                          );
-                          const item = form.printItems[choiceId];
-                          const spec =
-                              item?.dimensions === "custom"
-                                  ? item.customDimensions
-                                  : (item?.dimensions ?? "");
+                        const choice = service.choices.find(
+                            (item) => item.id === choiceId,
+                        );
+                        const item = form.printItems[choiceId];
+                        const spec =
+                            item?.dimensions === "custom"
+                                ? item.customDimensions
+                                : (item?.dimensions ?? "");
 
-                          return {
-                              id: choiceId,
-                              title: choice?.title ?? choiceId,
-                              spec,
-                              quantity: item?.quantity ?? "",
-                          };
-                      })
+                        return {
+                            id: choiceId,
+                            title: choice?.title ?? choiceId,
+                            spec,
+                            quantity: item?.quantity ?? "",
+                        };
+                    })
                     : [];
 
             services.push({
@@ -1743,6 +1743,9 @@ export default function HomePage() {
         const payload = { requester, services };
 
         const body = new FormData();
+        console.log("FRONTEND payload:", payload);
+
+
         body.append("payload", JSON.stringify(payload));
         for (const serviceId of addedServiceIds) {
             const form = serviceForms[serviceId];

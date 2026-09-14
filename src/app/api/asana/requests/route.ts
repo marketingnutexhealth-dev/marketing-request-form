@@ -14,6 +14,20 @@ const TEAM_EMAIL: Record<string, string> = {
     // Writing: "add-when-ready@example.com",
 };
 
+// TODO:
+// const TEAM_EMAIL: Record<string, string> = {
+//     Graphics: "graphics@nutexhealth.com",
+//     Web: "web@nutexhealth.com",
+//     Social: "social@nutexhealth.com",
+//     Writing: "writing@nutexhealth.com",
+//     Marketing: "marketing@nutexhealth.com",
+//     Digital: "digital@nutexhealth.com",
+//     Video: "video@nutexhealth.com",
+//     PR: "pr@nutexhealth.com",
+//     Operations: "operations@nutexhealth.com",
+// };
+
+
 type RequesterData = {
     facility?: string;
     facilityGid?: string;
